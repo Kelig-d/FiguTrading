@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             x:Class="FiguTrading.Views.LaEncherePage">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+            <Label Text="{Binding Path=Enchere.LeType.Nom, StringFormat='Enchère {0}'}" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" Margin="15"/>
+            <Image Source="{Binding Enchere.LeProduit.Photo}" Margin="25"/>
+            <Label FontAttributes="Bold" FontSize="20" Text="{Binding Enchere.LeProduit.Nom}" HorizontalOptions="Center"/>
+            <Label FontAttributes="Bold" LineBreakMode="TailTruncation" HorizontalOptions="Center" >
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Enchere.Visibilite}" Value="True">
+                        <Setter Property="Text" Value="{Binding Path=Enchere.PrixReserve, StringFormat='Prix de départ : {0} €'}" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding Enchere.Visibilite}" Value="False">
+                        <Setter Property="Text" Value="Prix de départ non connu"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <Label Text="{Binding TexteDate}"/>
+            <ProgressBar Progress="{Binding LeProgress}" ProgressColor="Pink" />
+            <Label HorizontalOptions="Center" Text="{Binding Path=PrixActuel, StringFormat='Prix actuel : {0}€'}"/>
+            <Button Text="Encherir" Margin="30" Command="{Binding Encherir}" IsVisible="{Binding Connected}"/>
+            <Label Text="{Binding Path=Enchere.LeMagasin.Nom, StringFormat='Magasin : {0}'}"/>
+            <Label Text="{Binding Path=Enchere.LeMagasin.Adresse, StringFormat='Adresse : {0}'}"/>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

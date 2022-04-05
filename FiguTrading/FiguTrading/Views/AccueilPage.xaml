@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FiguTrading.Views.AccueilPage"
+             Shell.NavBarIsVisible="False"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Margin="20">
+                <Label Text="Prochaine Enchère" FontAttributes="Bold"/>
+                <Frame 
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        HeightRequest="150"
+                        WidthRequest="150"
+                        Padding="0" 
+                        HasShadow="false"
+                        IsClippedToBounds="true"
+                        CornerRadius="10">
+                    <Image Source="{Binding ProchaineEnchere.LeProduit.Photo}" Aspect="Fill"/>
+                </Frame>
+                    <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="250">
+                        <Label HorizontalTextAlignment="Center"  Text="{Binding ProchaineEnchere.LeProduit.Nom}"/>
+
+                    </StackLayout>
+                </StackLayout>
+            <StackLayout Margin="20">
+                <Label Text="Les enchères en cours" FontAttributes="Bold" Margin="5"/>
+                <cards:CarouselView 
+                ItemsSource="{Binding LesEncheresEnCours}"
+                SlideShowDuration="3500"
+                SelectedItem="{Binding LaEnchere}"
+                >
+                    <cards:CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView>
+                                <Frame 
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        HeightRequest="150"
+                        WidthRequest="150"
+                        Padding="0" 
+                        HasShadow="false"
+                        IsClippedToBounds="true"
+                        CornerRadius="10"
+                        >
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="EnchereDetails"/>
+                                    </Frame.GestureRecognizers>
+
+                                    <Image Source="{Binding LeProduit.Photo}" Aspect="Fill" />
+
+                                </Frame>
+                            </ContentView>
+                        </DataTemplate>
+                    </cards:CarouselView.ItemTemplate>
+                </cards:CarouselView>
+                <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="250">
+                    <Label HorizontalTextAlignment="Center"  Text="{Binding LaEnchere.LeProduit.Nom}"/>
+
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

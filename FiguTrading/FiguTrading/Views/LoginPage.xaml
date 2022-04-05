@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FiguTrading.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+        RowSpacing="0"
+        ColumnSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="6*" />
+                </Grid.RowDefinitions>
+
+
+                <Image
+            Grid.Row="0"
+            Source="app_icon.png"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            HeightRequest="300"
+            WidthRequest="200" />
+
+                <Label 
+            Grid.Row="1"
+            Text="Se Connecter"
+            FontSize="Large"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+
+                <StackLayout                
+            Grid.Row="2"
+            VerticalOptions="Fill"
+            HorizontalOptions="Center"
+            Spacing="15">
+
+                    <StackLayout HorizontalOptions="Center" Spacing="5">
+                        <Label 
+                    Text="Email:" />
+                        <Entry 
+                    Text="{ Binding Email }" 
+                    Keyboard="Email"
+                    WidthRequest="300" />
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="Center" Spacing="5">
+                        <Label 
+                    Text="Mot de passe:" />
+                        <Entry 
+                    Text="{ Binding Password }"
+                    WidthRequest="300"
+                    IsPassword="True" />
+                    </StackLayout>
+                    <Button VerticalOptions="Center" Text="Se Connecter" Command="{Binding LoginCommand}"/>
+                    <Button VerticalOptions="Center" Text="Créer un compte" Command="{Binding Register}"/>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

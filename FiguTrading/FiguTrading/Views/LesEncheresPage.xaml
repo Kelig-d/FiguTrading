@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FiguTrading.Views.LesEncheresPage">
+    <ContentPage.Content>
+        
+        <StackLayout>
+            <Label Text="{Binding Title}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <StackLayout>
+                <CollectionView ItemsSource="{Binding MaListeEnchere}" SelectionMode="Single" SelectionChangedCommand="{Binding EnchereDetails}" SelectedItem="{Binding LaEnchere}"  VerticalOptions="Fill">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                        Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="150" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Aspect="AspectFill" HeightRequest="60" WidthRequest="60" Source="{Binding LeProduit.Photo}"/>
+                                    <Label Grid.Row="1" Text="{Binding LeProduit.Nom}" FontAttributes="Bold" LineBreakMode="TailTruncation" />
+                                <Label Grid.Row="2" FontAttributes="Bold" LineBreakMode="TailTruncation" >
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Visibilite}" Value="True">
+                                            <Setter Property="Text" Value="{Binding Path=PrixReserve, StringFormat='Prix de départ : {0} €'}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Visibilite}" Value="False">
+                                            <Setter Property="Text" Value="Prix non connu"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

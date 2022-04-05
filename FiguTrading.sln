@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiguTrading.Android", "FiguTrading\FiguTrading.Android\FiguTrading.Android.csproj", "{03D130A5-6D16-40AA-AFEF-03B40DFF147E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FiguTrading", "FiguTrading\FiguTrading\FiguTrading.csproj", "{84726FC2-ADE2-4ADC-907A-CAB02D7F987B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03D130A5-6D16-40AA-AFEF-03B40DFF147E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03D130A5-6D16-40AA-AFEF-03B40DFF147E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03D130A5-6D16-40AA-AFEF-03B40DFF147E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{03D130A5-6D16-40AA-AFEF-03B40DFF147E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03D130A5-6D16-40AA-AFEF-03B40DFF147E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03D130A5-6D16-40AA-AFEF-03B40DFF147E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{84726FC2-ADE2-4ADC-907A-CAB02D7F987B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84726FC2-ADE2-4ADC-907A-CAB02D7F987B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84726FC2-ADE2-4ADC-907A-CAB02D7F987B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{84726FC2-ADE2-4ADC-907A-CAB02D7F987B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84726FC2-ADE2-4ADC-907A-CAB02D7F987B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84726FC2-ADE2-4ADC-907A-CAB02D7F987B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C804818-1031-4E49-A227-FCBF7E2712A2}
+	EndGlobalSection
+EndGlobal

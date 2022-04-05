@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FiguTrading.Views.RegisterPage"
+             Title="S'inscrire">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="S'inscrire" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" />
+
+        <StackLayout Padding="10,0,10,10" VerticalOptions="End">
+            <StackLayout  VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                    <Image x:Name="profil_page" Source="{Binding Photo}" WidthRequest="80" HeightRequest="80" VerticalOptions="CenterAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding PhotoPicker}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            <StackLayout HorizontalOptions="Center" Spacing="5">
+                <Label 
+                    Text="Email:" />
+                <Entry 
+                    Text="{ Binding LeUser.Email }" 
+                    Keyboard="Email"
+                    WidthRequest="300" />
+            </StackLayout>
+
+                <StackLayout HorizontalOptions="Center" Spacing="5">
+                    <Label 
+                    Text="Pseudo:" />
+                    <Entry 
+                    Text="{ Binding LeUser.Pseudo }" 
+                    Keyboard="Email"
+                    WidthRequest="300" />
+                </StackLayout>
+            
+                <StackLayout HorizontalOptions="Center" Spacing="5">
+                <Label 
+                    Text="Mot de passe:" />
+                <Entry 
+                    Text="{ Binding LeUser.Password }"
+                    WidthRequest="300"
+                    IsPassword="True" />
+            </StackLayout>
+
+                <StackLayout HorizontalOptions="Center" Spacing="5">
+                    <Label 
+                    Text="Confirmer le mot de passe:" />
+                    <Entry 
+                    Text="{ Binding ConfirmPassword }"
+                    WidthRequest="300"
+                    IsPassword="True" />
+                </StackLayout>
+                <Button VerticalOptions="Center" Text="Créer un compte" Command="{Binding Register}"/>
+        </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
