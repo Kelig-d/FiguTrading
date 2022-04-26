@@ -57,7 +57,8 @@
                     </cards:CarouselView.ItemTemplate>
                 </cards:CarouselView>
                 <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="250">
-                    <Label HorizontalTextAlignment="Center"  Text="{Binding LaEnchere.LeProduit.Nom}"/>
+                    <Label HorizontalTextAlignment="Center" Text="{Binding LaEnchere.LeProduit.Nom}" />
+                    <Label HorizontalTextAlignment="Center"  Text="{Binding LaEnchere.LeType.Nom}"/>
 
                 </StackLayout>
             </StackLayout>

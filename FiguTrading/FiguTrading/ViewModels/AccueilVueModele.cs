@@ -22,6 +22,7 @@ namespace FiguTrading.ViewModels
             GetEncheresEnCours();
             GetProchaineEnchere();
             EnchereDetails = new Command(LesDetails);
+            _lesEncheresEnCours = new ObservableCollection<Enchere>();
         }
 
         public Enchere ProchaineEnchere { get => _prochaineEnchere; set => SetProperty(ref _prochaineEnchere, value); }
@@ -33,7 +34,14 @@ namespace FiguTrading.ViewModels
 
         public async void GetEncheresEnCours()
         {
-            LesEncheresEnCours = await _apiServices.GetAsync<Enchere>("getEncheresEnCours");
+            for(int i=0; i<4; i++)
+            {
+                var param = new Dictionary<string, object>() {{"IdTypeEnchere", i}};
+                var tempList = _lesEncheresEnCours.ToList();
+                tempList.AddRange(await _apiServices.GetAsync<Enchere>("getEncheresEnCours"));
+                _lesEncheresEnCours = new ObservableCollection<Enchere>(tempList);
+            }
+            
             
 
         }
