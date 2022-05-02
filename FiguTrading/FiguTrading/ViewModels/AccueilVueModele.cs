@@ -15,32 +15,50 @@ namespace FiguTrading.ViewModels
     {
         private Enchere _prochaineEnchere;
         private Enchere _enchere;
+        private Enchere _enchereFlash;
         private ObservableCollection<Enchere> _lesEncheresEnCours;
         private readonly Api _apiServices = new Api();
+        private ObservableCollection<Enchere> _lesEncheresFlashs;
         public AccueilVueModele()
         {
+            _lesEncheresEnCours = new ObservableCollection<Enchere>();
+            GetLesEncheresFlashs();
             GetEncheresEnCours();
             GetProchaineEnchere();
+            
+
             EnchereDetails = new Command(LesDetails);
-            _lesEncheresEnCours = new ObservableCollection<Enchere>();
+            
         }
 
         public Enchere ProchaineEnchere { get => _prochaineEnchere; set => SetProperty(ref _prochaineEnchere, value); }
         public ObservableCollection<Enchere> LesEncheresEnCours { get => _lesEncheresEnCours; set => SetProperty(ref _lesEncheresEnCours, value); }
 
+        public ObservableCollection<Enchere> LesEncheresFlashs
+        {
+            get => _lesEncheresFlashs;
+            set => SetProperty(ref _lesEncheresFlashs, value);
+        }
         public Command EnchereDetails { get; }
 
         public Enchere LaEnchere { get => _enchere; set => SetProperty(ref _enchere, value); }
-
+        
+        public Enchere LaEnchereFlash
+        {
+            get => _enchereFlash;
+            set => SetProperty(ref _enchereFlash, value);
+        }
         public async void GetEncheresEnCours()
         {
-            for(int i=0; i<4; i++)
+            var tempList = _lesEncheresEnCours.ToList();
+            for(int i=1; i<3; i++)
             {
                 var param = new Dictionary<string, object>() {{"IdTypeEnchere", i}};
-                var tempList = _lesEncheresEnCours.ToList();
-                tempList.AddRange(await _apiServices.GetAsync<Enchere>("getEncheresEnCours"));
-                _lesEncheresEnCours = new ObservableCollection<Enchere>(tempList);
+                var encheresByType = await _apiServices.GetAsync<Enchere>("getEncheresEnCours", param);
+                var listEncheresByType = encheresByType.ToList();
+                tempList.AddRange(listEncheresByType);
             }
+            LesEncheresEnCours = new ObservableCollection<Enchere>(tempList);
             
             
 
@@ -53,6 +71,12 @@ namespace FiguTrading.ViewModels
         private async void LesDetails()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new LaEncherePage(_enchere));
+        }
+
+        public async void GetLesEncheresFlashs()
+        {
+            var param = new Dictionary<string, object>() {{"IdTypeEnchere", 3}};
+            LesEncheresFlashs = await _apiServices.GetAsync<Enchere>("getEncheresFutures", param);
         }
     }
 }

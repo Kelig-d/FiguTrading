@@ -27,6 +27,7 @@ namespace FiguTrading.ViewModels
         public LaEnchereViewModel(Enchere enchere)
         {
             _enchere = enchere;
+            IsWon();
             ShowType();
             UpdateDate();
             GetPrixActuel();
@@ -90,6 +91,11 @@ namespace FiguTrading.ViewModels
             set => SetProperty(ref _isFlash, value);
         }
 
+        public bool IsNonFlash
+        {
+            get => !_isFlash;
+            set => SetProperty(ref _isFlash, !value);
+        }
         public bool Enabled
         {
             get => _enabled;
@@ -103,6 +109,24 @@ namespace FiguTrading.ViewModels
             IsInverse = _enchere.LeType.Nom == "inversevrai";
         }
 
+        public async void IsWon()
+        {
+            var param = new Dictionary<string, object>(){{"Id", _enchere.Id}};
+            User gagnant = null;
+            await Task.Run(async () =>
+            {
+                
+                while (gagnant == null)
+                {
+                    gagnant = await _apiServices.GetOneAsync<User>("getGagnant", param);
+                    Thread.Sleep(1000);
+                }
+                
+            });
+            await Application.Current.MainPage.DisplayAlert("Gagnant", "Le gagnant est "+gagnant.Pseudo, "Ok");
+            
+        }
+        
         public void UpdateDate()
         {
             if (_enchere.DateFin > DateTime.Now)
@@ -126,7 +150,7 @@ namespace FiguTrading.ViewModels
                             var realTime = dateFin - dateDebut;
                             TexteDate = "Il reste " + time.Days + " jours, " + time.Hours + " heures, " + time.Minutes +
                                         " minutes et " + time.Seconds + " secondes";
-                            LeProgress = 1 - (double) time.Ticks / (double) realTime.Ticks;
+                            LeProgress = (double) time.Ticks / (double) realTime.Ticks;
                             CanEncherir = true;
                         }
 

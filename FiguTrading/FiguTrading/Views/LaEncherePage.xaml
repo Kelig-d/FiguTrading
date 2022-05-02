@@ -7,12 +7,12 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <StackLayout>
+                <StackLayout IsVisible="{Binding IsNonFlash}">
                     <Label Text="{Binding Path=Enchere.LeType.Nom, StringFormat='Enchère {0}'}" FontAttributes="Bold"
                            FontSize="20" HorizontalOptions="Center" Margin="15" />
                     <Image Source="{Binding Enchere.LeProduit.Photo}" Margin="25" />
                     <Label FontAttributes="Bold" FontSize="20" Text="{Binding Enchere.LeProduit.Nom}"
-                           HorizontalOptions="Center" />
+                           HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
                     <Label FontAttributes="Bold" LineBreakMode="TailTruncation" HorizontalOptions="Center">
                         <Label.Triggers>
                             <DataTrigger TargetType="Label" Binding="{Binding Enchere.Visibilite}" Value="True">
@@ -24,8 +24,8 @@
                             </DataTrigger>
                         </Label.Triggers>
                     </Label>
-                    <Label Text="{Binding TexteDate}" />
-                    <ProgressBar Progress="{Binding LeProgress}" ProgressColor="Pink" />
+                    <Label Text="{Binding TexteDate}" HorizontalTextAlignment="Center" />
+                    <ProgressBar Progress="{Binding LeProgress}" ProgressColor="MediumPurple" Margin="15"  BackgroundColor="White"/>
                     <Label HorizontalOptions="Center"
                            Text="{Binding Path=PrixActuel, StringFormat='Prix actuel : {0}€'}" />
                     <StackLayout IsVisible="{Binding Connected}">
@@ -37,7 +37,14 @@
                     <Label Text="{Binding Path=Enchere.LeMagasin.Nom, StringFormat='Magasin : {0}'}" />
                     <Label Text="{Binding Path=Enchere.LeMagasin.Adresse, StringFormat='Adresse : {0}'}" />
                 </StackLayout>
+                
+                
+                <StackLayout IsVisible="{Binding IsFlash}">
+                    <Label Text="{Binding Path=Enchere.LeType.Nom, StringFormat='Enchère {0}'}" FontAttributes="Bold"
+                           FontSize="20" HorizontalOptions="Center" Margin="15" /> 
+                </StackLayout>
             </StackLayout>
+            
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

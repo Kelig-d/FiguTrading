@@ -17,7 +17,6 @@ namespace FiguTrading.ViewModels
         private readonly Api _apiServices = new Api();
         public LoginViewModel()
         {
-            IsConnected();
             LoginCommand = new Command(OnLoginClicked);
             Register = new Command(RegisterRedirect);
             GetSavedLogins();
@@ -27,12 +26,8 @@ namespace FiguTrading.ViewModels
         public Command Register { get; }
         public string Email { get => _email; set => SetProperty(ref _email, value); }
         public string Password { get => _password; set => SetProperty(ref _password, value); }
-
-        public async void IsConnected()
-        {
-            if (Constantes.Connected) await Shell.Current.GoToAsync($"//Profil");
-        }
-        private void OnLoginClicked(object obj)
+        
+        internal void OnLoginClicked(object obj)
         {
 
             Dictionary<string, object> param = new Dictionary<string, object>() { { "Email", _email }, { "Password", _password } };

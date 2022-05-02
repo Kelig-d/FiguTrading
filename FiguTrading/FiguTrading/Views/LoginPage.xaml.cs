@@ -14,6 +14,7 @@ namespace FiguTrading.Views
     {
         public LoginPage()
         {
+            OnAppearing();
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
             
@@ -21,7 +22,7 @@ namespace FiguTrading.Views
 
         protected async override void OnAppearing()
         {
-            if (Constantes.Connected) await Shell.Current.GoToAsync($"//Profil");
+            if (Constantes.Connected) await Shell.Current.GoToAsync($"//{nameof(ProfilPage)}");
         }
     }
 }

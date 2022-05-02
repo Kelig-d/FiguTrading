@@ -17,7 +17,11 @@
                         Padding="0" 
                         HasShadow="false"
                         IsClippedToBounds="true"
-                        CornerRadius="10">
+                        CornerRadius="10"
+                        >
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="EnchereDetailsProchaine" />
+                    </Frame.GestureRecognizers>
                     <Image Source="{Binding ProchaineEnchere.LeProduit.Photo}" Aspect="Fill"/>
                 </Frame>
                     <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="250">
@@ -62,6 +66,44 @@
 
                 </StackLayout>
             </StackLayout>
+                
+                <StackLayout Margin="20">
+                    <Label Text="Les enchères flash" FontAttributes="Bold" Margin="5"/>
+                    <cards:CarouselView 
+                        ItemsSource="{Binding LesEncheresFlash}"
+                        SlideShowDuration="3500"
+                        SelectedItem="{Binding LaEnchereFlash}"
+                    >
+                        <cards:CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <ContentView>
+                                    <Frame 
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        HeightRequest="150"
+                                        WidthRequest="150"
+                                        Padding="0" 
+                                        HasShadow="false"
+                                        IsClippedToBounds="true"
+                                        CornerRadius="10"
+                                    >
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="EnchereDetails"/>
+                                        </Frame.GestureRecognizers>
+
+                                        <Image Source="{Binding LeProduit.Photo}" Aspect="Fill" />
+
+                                    </Frame>
+                                </ContentView>
+                            </DataTemplate>
+                        </cards:CarouselView.ItemTemplate>
+                    </cards:CarouselView>
+                    <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="250">
+                        <Label HorizontalTextAlignment="Center" Text="{Binding LaEnchereFlash.LeProduit.Nom}" />
+                        <Label HorizontalTextAlignment="Center"  Text="{Binding LaEnchereFlash.LeType.Nom}"/>
+
+                    </StackLayout>
+                </StackLayout>
         </StackLayout>
         </ScrollView>
     </ContentPage.Content>

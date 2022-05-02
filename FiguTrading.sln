@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiguTrading.Android", "Figu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FiguTrading", "FiguTrading\FiguTrading\FiguTrading.csproj", "{84726FC2-ADE2-4ADC-907A-CAB02D7F987B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{0FBC2718-B5D6-4020-BBAA-F400559DA3B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{84726FC2-ADE2-4ADC-907A-CAB02D7F987B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84726FC2-ADE2-4ADC-907A-CAB02D7F987B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{84726FC2-ADE2-4ADC-907A-CAB02D7F987B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0FBC2718-B5D6-4020-BBAA-F400559DA3B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FBC2718-B5D6-4020-BBAA-F400559DA3B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FBC2718-B5D6-4020-BBAA-F400559DA3B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FBC2718-B5D6-4020-BBAA-F400559DA3B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

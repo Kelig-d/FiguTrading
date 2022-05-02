@@ -33,7 +33,7 @@
         <ShellContent Title="Accueil" Icon="icon_about.png" Route="AccueilPage" ContentTemplate="{DataTemplate local:AccueilPage}" />
         <ShellContent Title="Rechercher" Icon="icon_search.png" Route="" />
         <ShellContent x:Name="Connect" Title="Mon Compte" Icon="icon_account.png" Route="Connect" ContentTemplate="{DataTemplate local:LoginPage}" />
-        <ShellContent Title="Mon Profil" Icon="icon_about.png" Route="Profil" ContentTemplate="{DataTemplate local:ProfilPage}" IsVisible="False" />
+        <ShellContent Title="Mon Profil" Icon="icon_about.png" Route="ProfilPage" ContentTemplate="{DataTemplate local:ProfilPage}" IsVisible="False" />
     </TabBar>
 
     <!--
